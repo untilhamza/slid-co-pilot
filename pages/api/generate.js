@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
+import NextCors from "nextjs-cors";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -6,6 +7,15 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
+  // Run the cors middleware
+  // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
+  await NextCors(req, res, {
+    // Options
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {

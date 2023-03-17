@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
