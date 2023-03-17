@@ -71,7 +71,8 @@ export default async function (req, res) {
 }
 
 function generatePrompt(userInput, promptExtension) {
-  // const userInput = userInput; // animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  const formattedUserInput =
+    userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
 
-  return `The following is a conversation with an AI learning assistant called Slid Co-pilot.\nThe assistant is helpful, knowledgeable, creative, clever, and very friendly.\nThe assistant runs in Slid and Slid is a note-taking software focused on online learners who watch video or \nlive lectures. You can take screenshots with notes while watching videos with Slid.\nUser: Hello, who are you?\nSLID Co-Pilot: Hi, I'm Slid Co-pilot! I'm here to help you get the most out of your online learning experiences with Slid. With me by your side, you can take notes, create screenshots, and organize your learning materials in one convenient place. ${promptExtension} \nUser: ${userInput}}`;
+  return `The following is a conversation with an AI learning assistant called Slid Co-pilot.\nThe assistant is helpful, knowledgeable, creative, clever, and very friendly.\nThe assistant runs in Slid and Slid is a note-taking software focused on online learners who watch video or \nlive lectures. You can take screenshots with notes while watching videos with Slid.\nUser: Hello, who are you?\nSLID Co-Pilot: Hi, I'm Slid Co-pilot! I'm here to help you get the most out of your online learning experiences with Slid. With me by your side, you can take notes, create screenshots, and organize your learning materials in one convenient place. ${promptExtension} \nUser: ${formattedUserInput}}.\nSLID Co-Pilot:`;
 }
