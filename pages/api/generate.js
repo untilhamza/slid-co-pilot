@@ -38,7 +38,7 @@ export default async function (req, res) {
 
   const previousMessages = req.body.chatHistory || [];
 
-  //chatHistory = [{speaker: "User", message: "Hello"}, {speaker: "SLID Co-Pilot", message: "Hi there! How can I help you today?"}]
+  //chatHistory = [{speaker: "User", message: "Hello"}, {speaker: "SLID GPT", message: "Hi there! How can I help you today?"}]
 
   //chat history to be used as prompt extension
   function chatHistoryToPromptExtension(chatHistory) {
@@ -61,7 +61,7 @@ export default async function (req, res) {
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0.6,
-      stop: [" SLID Co-Pilot:", " User: "],
+      stop: [" SLID GPT:", " User: "],
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -84,5 +84,5 @@ function generatePrompt(userInput, promptExtension) {
   const formattedUserInput =
     userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
 
-  return `The following is a conversation with an AI learning assistant called Slid Co-pilot.\nThe assistant is helpful, knowledgeable, creative, clever, and very friendly.\nThe assistant runs in Slid and Slid is a note-taking software focused on online learners who watch video or \nlive lectures. You can take screenshots with notes while watching videos with Slid.\nUser: Hello, who are you?\nSLID Co-Pilot: Hi, I'm Slid Co-pilot! I'm here to help you get the most out of your online learning experiences with Slid. With me by your side, you can take notes, create screenshots, and organize your learning materials in one convenient place. ${promptExtension} \nUser: ${formattedUserInput}}.\nSLID Co-Pilot:`;
+  return `The following is a conversation with an AI learning assistant called Slid GPT.\nThe assistant is helpful, knowledgeable, creative, clever, and very friendly.\nThe assistant runs in Slid and Slid is a note-taking software focused on online learners who watch video or \nlive lectures. You can take screenshots with notes while watching videos with Slid.\nUser: Hello, who are you?\nSLID GPT: Hi, I'm Slid GPT! I'm here to help you get the most out of your online learning experiences with Slid. With me by your side, you can take notes, create screenshots, and organize your learning materials in one convenient place. ${promptExtension} \nUser: ${formattedUserInput}}.\nSLID GPT:`;
 }

@@ -50,7 +50,7 @@ export default function Home() {
       setMessages([
         ...messages,
         {
-          speaker: "SLID Co-Pilot",
+          speaker: "SLID GPT",
           message: result,
         },
       ]);
@@ -61,13 +61,13 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>SLID Co-Pilot</title>
+        <title>SLID GPT</title>
         <link rel="icon" href="/slid_logo.png" />
       </Head>
 
       <main className={styles.main}>
         <img src="/slid_logo.png" className={styles.icon} />
-        <h3>Slid Co-pilot play ground</h3>
+        <h3>Slid GPT play ground</h3>
         <div className={styles.container}>
           {messages.map((message, index) => (
             <div key={index} className={styles.container}>
@@ -85,7 +85,7 @@ export default function Home() {
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
           />
-          <input type="submit" value="userInput" />
+          <input type="submit" value="chat" />
         </form>
       </main>
     </div>

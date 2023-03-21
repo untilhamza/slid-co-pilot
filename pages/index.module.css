@@ -20,6 +20,7 @@
   color: #353740;
   font-family: "ColfaxAI", Helvetica, sans-serif;
   width: 100%;
+  padding: 2px 4px;
 }
 .main {
   display: flex;
